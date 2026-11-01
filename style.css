@@ -1,0 +1,297 @@
+
+/* GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #151515;
+    color: #dedbd4;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.8;
+}
+
+
+/* HEADER */
+
+.site-header {
+    text-align: center;
+    padding: 35px 20px;
+    border-bottom: 1px solid #333;
+}
+
+.site-title {
+    display: block;
+    color: #e8dfc9;
+    font-size: 25px;
+    letter-spacing: 5px;
+    text-decoration: none;
+}
+
+.site-subtitle {
+    color: #888;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+
+/* MAIN CONTAINER */
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 25px;
+}
+
+
+/* NOVEL INFORMATION */
+
+.novel-info {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.cover {
+    width: 160px;
+    height: 230px;
+    object-fit: cover;
+    background: #292929;
+    border: 1px solid #444;
+}
+
+.novel-description h1 {
+    color: #e8dfc9;
+    font-size: 30px;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.novel-description p {
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.genre {
+    color: #b69c70;
+    font-size: 13px;
+}
+
+
+/* DIVIDERS */
+
+hr {
+    border: none;
+    border-top: 1px solid #333;
+    margin: 35px 0;
+}
+
+
+/* CHAPTER SELECTOR */
+
+.chapter-navigation {
+    margin-bottom: 45px;
+}
+
+.chapter-navigation h2 {
+    color: #e8dfc9;
+    margin-bottom: 12px;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    background: #222;
+    color: #ddd;
+    border: 1px solid #444;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+
+/* READING AREA */
+
+.reading-area {
+    max-width: 700px;
+    margin: auto;
+}
+
+.chapter-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+#chapter-number {
+    color: #b69c70;
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+#chapter-title {
+    color: #e8dfc9;
+    font-size: 32px;
+    margin-top: 12px;
+    line-height: 1.3;
+}
+
+
+/* MARKDOWN CONTENT */
+
+.markdown-content {
+    font-size: 18px;
+    line-height: 2;
+    color: #d0cdc6;
+    overflow-wrap: anywhere;
+}
+
+.markdown-content p {
+    margin-bottom: 25px;
+    text-indent: 1.5em;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+    color: #e8dfc9;
+    line-height: 1.4;
+    margin: 35px 0 20px;
+}
+
+.markdown-content h1 {
+    font-size: 30px;
+}
+
+.markdown-content h2 {
+    font-size: 25px;
+}
+
+.markdown-content h3 {
+    font-size: 21px;
+}
+
+.markdown-content blockquote {
+    border-left: 3px solid #b69c70;
+    padding-left: 20px;
+    margin: 25px 0;
+    color: #aaa;
+    font-style: italic;
+}
+
+.markdown-content strong {
+    color: #fff;
+}
+
+.markdown-content em {
+    color: #d5c6a5;
+}
+
+.markdown-content a {
+    color: #c5a878;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+    margin: 20px 0 25px 35px;
+}
+
+
+/* PAGE NAVIGATION */
+
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: 50px auto;
+}
+
+button {
+    padding: 12px 22px;
+    background: #292929;
+    border: 1px solid #555;
+    color: #ddd;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #b69c70;
+    color: #151515;
+}
+
+button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #333;
+    color: #666;
+    font-size: 13px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .container {
+        margin: 25px auto;
+        padding: 0 18px;
+    }
+
+    .novel-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cover {
+        width: 140px;
+        height: 200px;
+    }
+
+    #chapter-title {
+        font-size: 27px;
+    }
+
+    .markdown-content {
+        font-size: 17px;
+    }
+
+    .page-navigation {
+        gap: 15px;
+    }
+
+    button {
+        padding: 10px 14px;
+    }
+}
+
+.markdown-content a {
+    color: #c5a878;
+    text-decoration: none;
+    border-bottom: 1px solid #c5a878;
+    transition: color 0.2s ease;
+}
+
+.markdown-content a:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+/* Prevent text selection in novel chapters */
+.markdown-content {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Death comes on time</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"></script>
+
+    <!-- HTML sanitizer for safe Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="site-title">A Missed Death Appointment</a>
+    
+    </header>
+
+    <main class="container">
+
+        <!-- Novel information -->
+        <section class="novel-info">
+            
+
+            <div class="novel-description">
+                <h1>A Missed Death Appointment</h1>
+
+                <p>
+                    Life can not start without a predetermined end. When Noah hears a voice telling him it's his time to die, he dismisses it, shaking off the uneasy feeling of anxiety growing inside. However, Death can not be outrun, even when the God of Death himself struggles to understand the predicament: Noah's heart refuses to stop beating.
+                </p>
+                <h1>From the author:</h1>
+                <p>
+                    This original novel is not to be distributed via any means other than this page without direct agreement from the author. If you see this work distributed elsewhere without the platform being mentioned here - it is unauthorised and against the author's agreement. For any comments, messages and inquires you can contact the author on <a href="https://ohnogodpls.tumblr.com/">Tumblr</a>, <a href="https://x.com/tasketeonegai">Twitter</a> or AO3.
+                </p>
+
+                
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Chapter selection -->
+        <section class="chapter-navigation">
+            <h2>Chapters</h2>
+            <select id="chapter-select">
+                <option value="">Select a chapter</option>
+            </select>
+        </section>
+
+        <!-- Chapter content -->
+        <article class="reading-area">
+
+            <div class="chapter-heading">
+                <span id="chapter-number">CHAPTER 01</span>
+                
+            </div>
+
+            <div id="chapter-content" class="markdown-content">
+                Loading chapter...
+            </div>
+
+        </article>
+
+        <!-- Previous / Next -->
+        <nav class="page-navigation">
+            <button id="previous-btn">← Previous</button>
+            <button id="next-btn">Next →</button>
+        </nav>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Ohnogodpls. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
