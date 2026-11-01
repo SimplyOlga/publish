@@ -1,5 +1,4 @@
 
-/* GENERAL */
 
 * {
     margin: 0;
@@ -15,7 +14,6 @@ body {
 }
 
 
-/* HEADER */
 
 .site-header {
     text-align: center;
@@ -38,16 +36,12 @@ body {
 }
 
 
-/* MAIN CONTAINER */
-
 .container {
     max-width: 900px;
     margin: 50px auto;
     padding: 0 25px;
 }
 
-
-/* NOVEL INFORMATION */
 
 .novel-info {
     display: flex;
@@ -82,7 +76,6 @@ body {
 }
 
 
-/* DIVIDERS */
 
 hr {
     border: none;
@@ -113,8 +106,6 @@ select {
 }
 
 
-/* READING AREA */
-
 .reading-area {
     max-width: 700px;
     margin: auto;
@@ -139,7 +130,6 @@ select {
 }
 
 
-/* MARKDOWN CONTENT */
 
 .markdown-content {
     font-size: 18px;
@@ -199,7 +189,6 @@ select {
 }
 
 
-/* PAGE NAVIGATION */
 
 .page-navigation {
     display: flex;
@@ -229,8 +218,6 @@ button:disabled {
 }
 
 
-/* FOOTER */
-
 footer {
     text-align: center;
     padding: 30px;
@@ -239,8 +226,6 @@ footer {
     font-size: 13px;
 }
 
-
-/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -288,7 +273,6 @@ footer {
     border-bottom-color: #fff;
 }
 
-/* Prevent text selection in novel chapters */
 .markdown-content {
     -webkit-user-select: none;
     -moz-user-select: none;

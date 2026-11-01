@@ -2,7 +2,6 @@
 let chapters = [];
 let currentChapter = 0;
 
-// Load chapter list
 async function initializeWebsite() {
     try {
         const response = await fetch("chapters.json");
@@ -41,8 +40,6 @@ async function initializeWebsite() {
     }
 }
 
-
-// Load an individual chapter
 async function loadChapter(index) {
     if (index < 0 || index >= chapters.length) return;
 
@@ -68,26 +65,21 @@ async function loadChapter(index) {
 
         const markdown = await response.text();
 
-        // Convert Markdown into HTML
         const rawHTML = marked.parse(markdown);
 
-        // Sanitize generated HTML
         content.innerHTML = DOMPurify.sanitize(rawHTML);
 
-        // Update chapter selector
         document.getElementById("chapter-select").value = index;
 
-        // Update navigation buttons
         document.getElementById("previous-btn").disabled =
             index === 0;
 
         document.getElementById("next-btn").disabled =
             index === chapters.length - 1;
 
-        // Update browser tab title
         document.title = chapter.title + " - A Missed Death Appointment";
 
-        // Start each chapter at the top
+        //scroll
         window.scrollTo({
     top: 0,
     behavior: "smooth"
@@ -99,17 +91,17 @@ async function loadChapter(index) {
 }
 
 
-// Previous chapter
+// Previous 
 document.getElementById("previous-btn").addEventListener("click", () => {
     loadChapter(currentChapter - 1);
 });
 
 
-// Next chapter
+// Next 
 document.getElementById("next-btn").addEventListener("click", () => {
     loadChapter(currentChapter + 1);
 });
-// Disable right-click inside chapter content
+// Disable right-click 
 document.addEventListener("contextmenu", function(event) {
     if (event.target.closest(".markdown-content")) {
         event.preventDefault();
@@ -132,6 +124,5 @@ document.addEventListener("keydown", function(event) {
 
 });
 
-// Start website
 initializeWebsite();
 
