@@ -11,5 +11,33 @@
     {
         "title": "Chapter 3",
         "file": "chapters/chapter-03.md"
+    },
+    {
+        "title": "Chapter 4",
+        "file": "chapters/chapter-04.md"
+    },
+    {
+        "title": "Chapter 5",
+        "file": "chapters/chapter-05.md"
+    },
+    {
+        "title": "Chapter 6",
+        "file": "chapters/chapter-06.md"
+    },
+    {
+        "title": "Chapter 7",
+        "file": "chapters/chapter-07.md"
+    },
+    {
+        "title": "Chapter 8",
+        "file": "chapters/chapter-08.md"
+    },
+    {
+        "title": "Chapter 9",
+        "file": "chapters/chapter-09.md"
+    },
+    {
+        "title": "Chapter 10",
+        "file": "chapters/chapter-10.md"
     }
 ]
