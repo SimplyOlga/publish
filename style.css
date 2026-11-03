@@ -279,3 +279,60 @@ footer {
     -ms-user-select: none;
     user-select: none;
 }
+
+
+/* Homepage option buttons */
+
+.option-button {
+    flex: 1;
+    min-height: 250px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 2rem;
+
+    color: #a88732;
+    
+    border: 2px solid #a88732;
+    border-radius: 12px;
+
+    text-decoration: none;
+    text-align: center;
+
+    transition: transform 0.2s ease,
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.option-button:hover {
+    background-color: #d9b85e;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.option-button:focus-visible {
+    outline: 3px solid #a88732;
+    outline-offset: 5px;
+}
+
+.option-number {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.option-description {
+    font-size: 1.1rem;
+}
+
+.home-button {
+    color: #a88732;
+}
+
+.link {
+    color: #a88732;
+}
