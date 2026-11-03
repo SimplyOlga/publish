@@ -1,5 +1,3 @@
-Part 1: The amusement park, first meeting
-
 Getting dropped into a world of ghost stories is one thing. Getting stuck with a company actively exploring them - is a whole different story. 
 
 The murderous trial at the subway, a tag with a ghost for three days, clowns creeping at you from paintings: for Kim Soleum it just kept getting worse and worse. It was all due time to accidentally find himself fully separated from his squad, left alone in a darkness now calling him a good child, denying him any escape from the world of “joy and fun”. 
