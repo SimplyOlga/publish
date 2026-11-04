@@ -47,5 +47,10 @@
     {
         "title": "Chapter 12",
         "file": "chapters/chapter-12.md"
-    }
+    }, 
+    {
+      "title": "Chapter 13",
+        "file": "chapters/chapter-13.md"
+    } 
+    
 ]

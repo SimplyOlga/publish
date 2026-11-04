@@ -11,5 +11,27 @@
     {
         "title": "Chapter 3",
         "file": "chapter-03.md"
+    },{
+        "title": "Chapter 4",
+        "file": "chapter-04.md"
+    },
+    {
+        "title": "Chapter 5",
+        "file": "chapter-05.md"
+    },
+    {
+        "title": "Chapter 6",
+        "file": "chapter-06.md"
+    },{
+        "title": "Chapter 7",
+        "file": "chapter-07.md"
+    },
+    {
+        "title": "Chapter 8",
+        "file": "chapter-08.md"
+    },
+    {
+        "title": "Chapter 9: Saheon's bad, very bad day",
+        "file": "chapter-09.md"
     }
 ]
