@@ -43,5 +43,9 @@
     {
         "title": "Chapter 11",
         "file": "chapters/chapter-11.md"
+    },
+    {
+        "title": "Chapter 12",
+        "file": "chapters/chapter-12.md"
     }
 ]
