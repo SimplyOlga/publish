@@ -2,6 +2,13 @@
 let chapters = [];
 let currentChapter = 0;
 
+const BOOKMARK_KEY = "missedDeathAppointment_bookmark";
+
+
+// ==========================================
+// INITIALIZE WEBSITE
+// ==========================================
+
 async function initializeWebsite() {
     try {
         const response = await fetch("underchapters.json");
@@ -29,8 +36,24 @@ async function initializeWebsite() {
             }
         });
 
+        // Restore existing bookmark
         if (chapters.length > 0) {
-            loadChapter(0);
+
+            const bookmark = getBookmark();
+
+            if (
+                bookmark &&
+                Number.isInteger(bookmark.chapter) &&
+                bookmark.chapter >= 0 &&
+                bookmark.chapter < chapters.length
+            ) {
+                loadChapter(
+                    bookmark.chapter,
+                    bookmark.scrollPosition
+                );
+            } else {
+                loadChapter(0);
+            }
         }
 
     } catch (error) {
@@ -41,7 +64,13 @@ async function initializeWebsite() {
     }
 }
 
-async function loadChapter(index) {
+
+// ==========================================
+// LOAD CHAPTER
+// ==========================================
+
+async function loadChapter(index, restorePosition = null) {
+
     if (index < 0 || index >= chapters.length) return;
 
     currentChapter = index;
@@ -56,7 +85,6 @@ async function loadChapter(index) {
     content.textContent = "Loading...";
 
     try {
-        // Load Markdown files from the underchapters folder
         const response = await fetch(`underchapters/${chapter.file}`);
 
         if (!response.ok) {
@@ -77,13 +105,30 @@ async function loadChapter(index) {
         document.getElementById("next-btn").disabled =
             index === chapters.length - 1;
 
-        document.title =
-            chapter.title + " - Undercover";
+        document.title = chapter.title + " - A Missed Death Appointment";
 
-        // Scroll to top
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+        // Wait for rendered content before scrolling
+        requestAnimationFrame(() => {
+
+            if (restorePosition !== null) {
+
+                window.scrollTo({
+                    top: Math.max(0, restorePosition),
+                    behavior: "instant"
+                });
+
+            } else {
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+
+            // Restore saved bookmark marker
+            restoreSavedBookmark();
+
         });
 
     } catch (error) {
@@ -92,25 +137,166 @@ async function loadChapter(index) {
     }
 }
 
-// Previous chapter
+
+// ==========================================
+// SAVE BOOKMARK
+// ==========================================
+
+function saveBookmark() {
+
+    const bookmark = {
+        chapter: currentChapter,
+        scrollPosition: window.scrollY,
+
+        // Save exact vertical screen position
+        markerPosition: window.scrollY + window.innerHeight / 2,
+
+        timestamp: Date.now()
+    };
+
+    try {
+        localStorage.setItem(
+            BOOKMARK_KEY,
+            JSON.stringify(bookmark)
+        );
+
+        // Remove previous marker
+        const oldMarker = document.querySelector(".saved-bookmark");
+
+        if (oldMarker) {
+            oldMarker.remove();
+        }
+
+        // Create new marker
+        renderSavedBookmark(bookmark);
+
+    } catch (error) {
+        console.error("Could not save bookmark:", error);
+    }
+}
+
+
+
+// ==========================================
+// GET SAVED BOOKMARK
+// ==========================================
+
+function getBookmark() {
+
+    try {
+
+        const saved = localStorage.getItem(BOOKMARK_KEY);
+
+        if (!saved) return null;
+
+        const bookmark = JSON.parse(saved);
+
+        if (
+            !Number.isInteger(bookmark.chapter) ||
+            !Number.isFinite(bookmark.scrollPosition) ||
+            !Number.isFinite(bookmark.markerPosition)
+        ) {
+            return null;
+        }
+
+        return bookmark;
+
+    } catch (error) {
+
+        console.error("Could not retrieve bookmark:", error);
+
+        return null;
+
+    }
+}
+
+
+// ==========================================
+// DISPLAY SAVED BOOKMARK MARKER
+// ==========================================
+
+function renderSavedBookmark(bookmark) {
+
+    if (!bookmark) return;
+
+    const marker = document.createElement("img");
+
+    marker.src = "assets/bookmark.png";
+    marker.className = "saved-bookmark";
+    marker.alt = "";
+
+    marker.style.top = bookmark.markerPosition + "px";
+
+    document.body.appendChild(marker);
+}
+
+
+// ==========================================
+// RESTORE SAVED BOOKMARK
+// ==========================================
+
+function restoreSavedBookmark() {
+
+    const bookmark = getBookmark();
+
+    if (bookmark) {
+        renderSavedBookmark(bookmark);
+    }
+}
+
+
+// ==========================================
+// BOOKMARK BUTTON
+// ==========================================
+
+document.getElementById("bookmark-btn").addEventListener("click", () => {
+
+    saveBookmark();
+
+});
+
+
+// ==========================================
+// PREVIOUS CHAPTER
+// ==========================================
+
 document.getElementById("previous-btn").addEventListener("click", () => {
+
     loadChapter(currentChapter - 1);
+
 });
 
-// Next chapter
+
+// ==========================================
+// NEXT CHAPTER
+// ==========================================
+
 document.getElementById("next-btn").addEventListener("click", () => {
+
     loadChapter(currentChapter + 1);
+
 });
 
-// Disable right-click
+
+// ==========================================
+// DISABLE RIGHT-CLICK
+// ==========================================
+
 document.addEventListener("contextmenu", function(event) {
+
     if (event.target.closest(".markdown-content")) {
         event.preventDefault();
     }
+
 });
 
-// Disable copy, select all, cut, save, and view source shortcuts
+
+// ==========================================
+// DISABLE SELECTED KEYBOARD SHORTCUTS
+// ==========================================
+
 document.addEventListener("keydown", function(event) {
+
     const content = document.querySelector(".markdown-content");
 
     if (!content) return;
@@ -122,6 +308,12 @@ document.addEventListener("keydown", function(event) {
     ) {
         event.preventDefault();
     }
+
 });
+
+
+// ==========================================
+// START WEBSITE
+// ==========================================
 
 initializeWebsite();
