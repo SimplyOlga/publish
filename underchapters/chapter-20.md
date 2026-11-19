@@ -1,5 +1,4 @@
 
-
 [Are you sure?]
 
 The answer was evidently ‘no’. Still, Kim Soleum’s hand didn’t leave the cold metal of the door handle. The pale fingers tapped lightly at the silver and finally let go. 
