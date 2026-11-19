@@ -336,3 +336,82 @@ footer {
 .link {
     color: #a88732;
 }
+
+/* Floating bookmark */
+.floating-bookmark {
+    position: fixed;
+    top: 50%;
+    right: -35px;
+    transform: translateY(-50%);
+    z-index: 1001;
+
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+
+    transition: right 0.3s ease;
+}
+
+.floating-bookmark img {
+    display: block;
+    width: 75px;
+    height: auto;
+}
+
+.floating-bookmark:hover {
+    right: 0;
+}
+
+
+/* Saved bookmark - stays in document */
+.saved-bookmark {
+    position: absolute;
+
+    right: -35px;
+
+    width: 75px;
+    height: auto;
+
+    transform: translateY(-50%);
+
+    z-index: 1000;
+
+    pointer-events: none;
+    user-select: none;
+}
+/* Bookmark button overrides */
+.floating-bookmark,
+.floating-bookmark:hover,
+.floating-bookmark:focus,
+.floating-bookmark:focus-visible,
+.floating-bookmark:active {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    color: inherit !important;
+}
+
+.floating-bookmark:hover {
+    right: 0;
+}
+
+.floating-bookmark img {
+    display: block;
+    width: 75px;
+    height: auto;
+}
+
+/* Saved bookmark marker */
+.saved-bookmark {
+    position: absolute;
+    right: -35px;
+    width: 75px;
+    height: auto;
+    transform: translateY(-50%);
+    z-index: 1000;
+    pointer-events: none;
+    user-select: none;
+}
