@@ -2,7 +2,7 @@
 let chapters = [];
 let currentChapter = 0;
 
-const BOOKMARK_KEY = "missedDeathAppointment_bookmark";
+const BOOKMARK_KEY_UNDERCOVER = "undercover_bookmark";
 
 
 // ==========================================
@@ -156,7 +156,7 @@ function saveBookmark() {
 
     try {
         localStorage.setItem(
-            BOOKMARK_KEY,
+            BOOKMARK_KEY_UNDERCOVER,
             JSON.stringify(bookmark)
         );
 
@@ -185,7 +185,7 @@ function getBookmark() {
 
     try {
 
-        const saved = localStorage.getItem(BOOKMARK_KEY);
+        const saved = localStorage.getItem(BOOKMARK_KEY_UNDERCOVER);
 
         if (!saved) return null;
 
