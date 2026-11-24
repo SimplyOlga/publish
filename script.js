@@ -4,13 +4,61 @@ let currentChapter = 0;
 
 const BOOKMARK_KEY = "missedDeathAppointment_bookmark";
 
+// ==========================================
+// MARKDOWN RENDERING
+// ==========================================
+
+function renderMarkdown(markdown) {
+
+    // Normalize line endings
+    markdown = markdown.replace(/\r\n?/g, "\n");
+
+    // Preserve multiple blank lines without modifying code blocks
+    const codeBlocks = [];
+
+    markdown = markdown.replace(
+        /(^|\n)(```|~~~)[^\n]*\n[\s\S]*?\n\2[ \t]*(?=\n|$)/g,
+        (match) => {
+            const placeholder = `MARKDOWNCODEBLOCK${codeBlocks.length}END`;
+            codeBlocks.push(match);
+            return "\n" + placeholder;
+        }
+    );
+
+    // Convert single newlines into Markdown line breaks.
+    // Preserve additional blank lines as larger paragraph gaps.
+    markdown = markdown.replace(/\n+/g, (match) => {
+
+        if (match.length === 1) {
+            return "  \n";
+        }
+
+        return "\n\n" + "<br>".repeat(match.length - 2) + "\n";
+
+    });
+
+    // Restore code blocks
+    markdown = markdown.replace(
+        /MARKDOWNCODEBLOCK(\d+)END/g,
+        (match, index) => codeBlocks[Number(index)]
+    );
+
+    // Parse Markdown
+    const rawHTML = marked.parse(markdown);
+
+    // Sanitize generated HTML
+    return DOMPurify.sanitize(rawHTML);
+}
+
 
 // ==========================================
 // INITIALIZE WEBSITE
 // ==========================================
 
 async function initializeWebsite() {
+
     try {
+
         const response = await fetch("chapters.json");
 
         if (!response.ok) {
@@ -22,18 +70,22 @@ async function initializeWebsite() {
         const selector = document.getElementById("chapter-select");
 
         chapters.forEach((chapter, index) => {
+
             const option = document.createElement("option");
 
             option.value = index;
             option.textContent = chapter.title;
 
             selector.appendChild(option);
+
         });
 
         selector.addEventListener("change", () => {
+
             if (selector.value !== "") {
                 loadChapter(Number(selector.value));
             }
+
         });
 
         // Restore existing bookmark
@@ -47,21 +99,29 @@ async function initializeWebsite() {
                 bookmark.chapter >= 0 &&
                 bookmark.chapter < chapters.length
             ) {
+
                 loadChapter(
                     bookmark.chapter,
                     bookmark.scrollPosition
                 );
+
             } else {
+
                 loadChapter(0);
+
             }
+
         }
 
     } catch (error) {
+
         console.error(error);
 
         document.getElementById("chapter-content").textContent =
             "Could not load the chapters.";
+
     }
+
 }
 
 
@@ -85,6 +145,7 @@ async function loadChapter(index, restorePosition = null) {
     content.textContent = "Loading...";
 
     try {
+
         const response = await fetch(chapter.file);
 
         if (!response.ok) {
@@ -93,9 +154,8 @@ async function loadChapter(index, restorePosition = null) {
 
         const markdown = await response.text();
 
-        const rawHTML = marked.parse(markdown);
-
-        content.innerHTML = DOMPurify.sanitize(rawHTML);
+        // Render Markdown with preserved line breaks
+        content.innerHTML = renderMarkdown(markdown);
 
         document.getElementById("chapter-select").value = index;
 
@@ -105,7 +165,8 @@ async function loadChapter(index, restorePosition = null) {
         document.getElementById("next-btn").disabled =
             index === chapters.length - 1;
 
-        document.title = chapter.title + " - A Missed Death Appointment";
+        document.title =
+            chapter.title + " - A Missed Death Appointment";
 
         // Wait for rendered content before scrolling
         requestAnimationFrame(() => {
@@ -132,9 +193,13 @@ async function loadChapter(index, restorePosition = null) {
         });
 
     } catch (error) {
+
         console.error(error);
+
         content.textContent = "Could not load this chapter.";
+
     }
+
 }
 
 
@@ -145,36 +210,38 @@ async function loadChapter(index, restorePosition = null) {
 function saveBookmark() {
 
     const bookmark = {
+
         chapter: currentChapter,
         scrollPosition: window.scrollY,
 
-        // Save exact vertical screen position
         markerPosition: window.scrollY + window.innerHeight / 2,
 
         timestamp: Date.now()
+
     };
 
     try {
+
         localStorage.setItem(
             BOOKMARK_KEY,
             JSON.stringify(bookmark)
         );
 
-        // Remove previous marker
         const oldMarker = document.querySelector(".saved-bookmark");
 
         if (oldMarker) {
             oldMarker.remove();
         }
 
-        // Create new marker
         renderSavedBookmark(bookmark);
 
     } catch (error) {
-        console.error("Could not save bookmark:", error);
-    }
-}
 
+        console.error("Could not save bookmark:", error);
+
+    }
+
+}
 
 
 // ==========================================
@@ -196,7 +263,9 @@ function getBookmark() {
             !Number.isFinite(bookmark.scrollPosition) ||
             !Number.isFinite(bookmark.markerPosition)
         ) {
+
             return null;
+
         }
 
         return bookmark;
@@ -208,6 +277,7 @@ function getBookmark() {
         return null;
 
     }
+
 }
 
 
@@ -228,6 +298,7 @@ function renderSavedBookmark(bookmark) {
     marker.style.top = bookmark.markerPosition + "px";
 
     document.body.appendChild(marker);
+
 }
 
 
@@ -242,6 +313,7 @@ function restoreSavedBookmark() {
     if (bookmark) {
         renderSavedBookmark(bookmark);
     }
+
 }
 
 
@@ -306,7 +378,9 @@ document.addEventListener("keydown", function(event) {
         (event.ctrlKey || event.metaKey) &&
         ["c", "a", "x", "s", "u"].includes(event.key.toLowerCase())
     ) {
+
         event.preventDefault();
+
     }
 
 });

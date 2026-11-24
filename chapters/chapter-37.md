@@ -273,13 +273,13 @@ A Death without Time… what a lonely existence.
 
 He walked to his room with his mind completely blank. He felt like shit, worse than ever before, worse than after failed exams, after funerals, after traumatic news. After dying himself. 
 
-Whenever he was down before, he could call his friends, call them over, chug down ice cream until indigestion was more pressing than his life problems. It was a stupid way to live his life, but it was comforting, it was predictable and only more beautiful because of it. Now, he had no one. So, he dragged himself to his room, pressing his head agaisnt the door. 
+Whenever he was down before, he could call his friends, call them over, chug down ice cream until indigestion was more pressing than his life problems. It was a stupid way to live his life, but it was comforting, it was predictable and only more beautiful because of it. Now, he had no one. So, he dragged himself to his room, pressing his head against the door. 
 
-He should be home, but his home was far away and unpredictable and hostile. He should be with Emmy, but her face distorted by grief was still a fresh visage in front of his eyes. He wanted to speak to Leo, but the tightness around his throat was still birning in fresh red streaks. He wanted to at least comfort himself in presence of a Deity that would show him that all the troubles are temporary, but even Anubis had just showed him a face bearing an emotion so unlike anything he had seen before, even just thinking about it made Noah hurt. 
+He should be home, but his home was far away and unpredictable and hostile. He should be with Emmy, but her face distorted by grief was still a fresh visage in front of his eyes. He wanted to speak to Leo, but the tightness around his throat was still burning in fresh red streaks. He wanted to at least comfort himself in presence of a Deity that would show him that all the troubles are temporary, but even Anubis had just showed him a face bearing an emotion so unlike anything he had seen before, even just thinking about it made Noah hurt. 
 
 He really was the one who always demanded comfort. The one asking for help.
 
-He pulled out the two small boxed from his pockets and looked at the msyterious scythe broken into tiny sharp pieces. Noah had no idea it would actually have powers, and now that he was looking back at what had happened, his mind was raising alarms. 
+He pulled out the two small boxed from his pockets and looked at the mysterious scythe broken into tiny sharp pieces. Noah had no idea it would actually have powers, and now that he was looking back at what had happened, his mind was raising alarms. 
 
 “This is not something that should be working the way it did, neither should it be active at all.”
 

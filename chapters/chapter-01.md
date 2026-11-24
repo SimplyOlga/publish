@@ -75,6 +75,7 @@ Noah tapped on the table with clear unease, thinking how to better bright the su
 
 
 
+
 “Yes, I spoke to Emmy, she was all fine. The job suits her.”
 
 Noah pressed the phone between his cheek and shoulder, patting his pockets in search of a smoke.
